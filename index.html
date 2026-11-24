@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ушастый гоблин — терминал-рогалик</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="brand">
+    <span class="eyebrow">гоблин-roguelike · v0.1</span>
+    <h1 class="headline">Ушастый гоблин ждёт первого шага</h1>
+  </div>
+  <div class="topbar-right">
+    <div class="readout">
+      <span class="ro-label">этаж</span>
+      <span class="ro-val" id="hudFloor">01</span>
+    </div>
+    <div class="readout">
+      <span class="ro-label">врагов</span>
+      <span class="ro-val" id="hudMobs">0</span>
+    </div>
+    <button id="btnReset" class="btn ghost" title="Стереть сохранение и начать заново">[ новая игра ]</button>
+  </div>
+</header>
+
+<main class="layout">
+  <!-- ЛЕВАЯ ПАНЕЛЬ: персонаж -->
+  <aside class="panel left" aria-label="Карточка персонажа">
+    <section class="card hero-card">
+      <div class="card-tag">// персонаж</div>
+      <pre class="goblin-art" id="goblinArt" aria-label="Ушастый гоблин"></pre>
+      <div class="hero-name-line">
+        <span class="hero-name">Гоблин Грохт</span>
+        <span class="lvl-chip">ур. <b id="lvlNum">0</b></span>
+      </div>
+      <div class="xp-row">
+        <div class="xp-bar" role="progressbar" aria-label="Опыт до следующего уровня">
+          <div class="xp-fill" id="xpFill"></div>
+        </div>
+        <span class="xp-num" id="xpNum">0 / 100</span>
+      </div>
+      <dl class="statgrid">
+        <div class="stat"><dt>ХП</dt><dd id="stHp">20/20</dd></div>
+        <div class="stat"><dt>Атака</dt><dd id="stAtk">3</dd></div>
+        <div class="stat"><dt>Защита</dt><dd id="stDef">2</dd></div>
+      </dl>
+      <div class="coins-line"><span class="ro-label">монеты</span><b id="coinNum" class="coin-val">0</b><span class="coin-sign">¤</span></div>
+      <div class="sec-label">слоты усиления <span class="dim">— артефакты из инвентаря</span></div>
+      <div class="slotrow" id="slotRow"></div>
+      <div class="sec-label">инвентарь <span class="dim">— перетащи предмет на предмет, чтобы скрафтить</span></div>
+      <div class="invgrid" id="invGrid"></div>
+      <div class="iteminfo" id="itemInfo" aria-live="polite">— выбери предмет —</div>
+    </section>
+  </aside>
+
+  <!-- ЦЕНТР: поле -->
+  <section class="panel center" aria-label="Игровое поле">
+    <div class="hud">
+      <span id="hudHint">WASD / стрелки — шаг · клик по соседней клетке — тоже</span>
+      <span id="hudClear" class="hidden-clear">✓ сектор зачищен</span>
+    </div>
+    <div class="board-wrap" id="boardWrap">
+      <div class="board" id="board"></div>
+    </div>
+    <div class="center-foot">
+      <button id="btnEnter" class="btn enter hidden" disabled>[ ENTER ] — уйти за край экрана</button>
+      <div class="legend">
+        <span><b>٩(◕)۶</b> ты</span><span><b>▚▞</b> препятствие</span><span><b>≈⌇</b> лут</span><span><b>◣_◢</b> монстры</span><span><b>ʕ·ᴥ·ʔ</b> нпс</span><span><b style="color:var(--accent)"> + </b>опыт</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ПРАВАЯ ПАНЕЛЬ: контакт / журнал -->
+  <aside class="panel right" aria-label="Контакт и журнал">
+    <section class="card contact" id="contact"></section>
+    <section class="card logcard">
+      <div class="card-tag">// журнал</div>
+      <div class="log" id="log" aria-live="polite"></div>
+    </section>
+  </aside>
+</main>
+
+<script src="js/game.js"></script>
+</body>
+</html>
